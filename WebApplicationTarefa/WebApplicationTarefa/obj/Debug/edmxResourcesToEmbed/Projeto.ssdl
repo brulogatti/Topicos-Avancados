@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TarefaModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TB_PROJETO">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="50" />
+    <Property Name="dtiniprojeto" Type="datetime" />
+    <Property Name="dtimplantado" Type="datetime" />
+    <Property Name="dtteste" Type="datetime" />
+    <Property Name="qtdpessoas" Type="int" />
+    <Property Name="contatotel1" Type="varchar" MaxLength="50" />
+    <Property Name="contatotel2" Type="varchar" MaxLength="50" />
+    <Property Name="observacao" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="TarefaModel1StoreContainer">
+    <EntitySet Name="TB_PROJETO" EntityType="Self.TB_PROJETO" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

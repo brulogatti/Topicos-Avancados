@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TarefaModel1StoreContainer" CdmEntityContainer="TarefaEntities1">
+    <EntitySetMapping Name="TB_PROJETO">
+      <EntityTypeMapping TypeName="TarefaModel1.TB_PROJETO">
+        <MappingFragment StoreEntitySet="TB_PROJETO">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="dtiniprojeto" ColumnName="dtiniprojeto" />
+          <ScalarProperty Name="dtimplantado" ColumnName="dtimplantado" />
+          <ScalarProperty Name="dtteste" ColumnName="dtteste" />
+          <ScalarProperty Name="qtdpessoas" ColumnName="qtdpessoas" />
+          <ScalarProperty Name="contatotel1" ColumnName="contatotel1" />
+          <ScalarProperty Name="contatotel2" ColumnName="contatotel2" />
+          <ScalarProperty Name="observacao" ColumnName="observacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

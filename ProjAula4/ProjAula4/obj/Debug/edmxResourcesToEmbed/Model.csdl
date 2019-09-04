@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Aula4Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CIDADE">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idestado" Type="Int32" />
+    <NavigationProperty Name="ESTADO" Relationship="Self.FK_CIDADE" FromRole="CIDADE" ToRole="ESTADO" />
+  </EntityType>
+  <EntityType Name="ESTADO">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CIDADE" Relationship="Self.FK_CIDADE" FromRole="ESTADO" ToRole="CIDADE" />
+  </EntityType>
+  <Association Name="FK_CIDADE">
+    <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="0..1" />
+    <End Role="CIDADE" Type="Self.CIDADE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CIDADE">
+        <PropertyRef Name="idestado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Aula4Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CIDADE" EntityType="Self.CIDADE" />
+    <EntitySet Name="ESTADO" EntityType="Self.ESTADO" />
+    <AssociationSet Name="FK_CIDADE" Association="Self.FK_CIDADE">
+      <End Role="ESTADO" EntitySet="ESTADO" />
+      <End Role="CIDADE" EntitySet="CIDADE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

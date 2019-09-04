@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TarefaModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TB_PROJETO">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dtiniprojeto" Type="DateTime" Precision="3" />
+    <Property Name="dtimplantado" Type="DateTime" Precision="3" />
+    <Property Name="dtteste" Type="DateTime" Precision="3" />
+    <Property Name="qtdpessoas" Type="Int32" />
+    <Property Name="contatotel1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="contatotel2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="observacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="TarefaEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TB_PROJETO" EntityType="Self.TB_PROJETO" />
+  </EntityContainer>
+</Schema>
