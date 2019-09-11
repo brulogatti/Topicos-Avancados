@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Aula5ModelStoreContainer" CdmEntityContainer="Aula5Entities">
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="Aula5Model.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="cidade" ColumnName="cidade" />
+          <ScalarProperty Name="endereco" ColumnName="endereco" />
+          <ScalarProperty Name="cpf" ColumnName="cpf" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPRA">
+      <EntityTypeMapping TypeName="Aula5Model.COMPRA">
+        <MappingFragment StoreEntitySet="COMPRA">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_fornecedor" ColumnName="id_fornecedor" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="id_material" ColumnName="id_material" />
+          <ScalarProperty Name="datavenda" ColumnName="datavenda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FORNECEDOR">
+      <EntityTypeMapping TypeName="Aula5Model.FORNECEDOR">
+        <MappingFragment StoreEntitySet="FORNECEDOR">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="cidade" ColumnName="cidade" />
+          <ScalarProperty Name="endereco" ColumnName="endereco" />
+          <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATERIAL">
+      <EntityTypeMapping TypeName="Aula5Model.MATERIAL">
+        <MappingFragment StoreEntitySet="MATERIAL">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="dataentrada" ColumnName="dataentrada" />
+          <ScalarProperty Name="id_tipo" ColumnName="id_tipo" />
+          <ScalarProperty Name="id_fornecedor" ColumnName="id_fornecedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO">
+      <EntityTypeMapping TypeName="Aula5Model.TIPO">
+        <MappingFragment StoreEntitySet="TIPO">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

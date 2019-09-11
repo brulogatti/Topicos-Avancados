@@ -1,0 +1,148 @@
+/****** CRIAR BD CHAMADO Aula5 ******/
+/****** TIPO ******/
+USE [Aula5]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[TIPO](
+[id] [int] IDENTITY(1,1) NOT NULL,
+[descricao] [varchar](50) NULL,
+
+CONSTRAINT [PK_tb_tipo] PRIMARY KEY CLUSTERED
+
+(
+[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** FORNECEDOR ******/
+USE [Aula5]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[FORNECEDOR](
+[id] [int] IDENTITY(1,1) NOT NULL,
+[nome] [varchar](50) NULL,
+[telefone] [varchar] (50) NULL,
+[cidade] [varchar] (50) NULL,
+[endereco] [varchar] (50) NULL,
+[cnpj] [int] NULL,
+
+CONSTRAINT [PK_tb_fornecedor] PRIMARY KEY CLUSTERED
+
+(
+[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+
+/****** CLIENTE ******/
+USE [Aula5]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[CLIENTE](
+[id] [int] IDENTITY(1,1) NOT NULL,
+[nome] [varchar](50) NULL,
+[telefone] [varchar] (50) NULL,
+[cidade] [varchar] (50) NULL,
+[endereco] [varchar] (50) NULL,
+[cpf] [int] NULL,
+
+
+/**constraint FK_CIDADE foreign key (idestado) references ESTADO(id),*/
+CONSTRAINT [PK_tb_cliente] PRIMARY KEY CLUSTERED
+
+(
+[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+
+/****** MATERIAL ******/
+USE [Aula5]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[MATERIAL](
+[id] [int] IDENTITY(1,1) NOT NULL,
+[descricao] [varchar](50) NULL,
+[dataentrada] [date] NULL,
+[id_tipo] [int] NULL,
+[id_fornecedor] [int] NULL,
+
+
+constraint FK_tipo foreign key (id_tipo) references TIPO(id),
+constraint FK_fornecedor foreign key (id_fornecedor) references FORNECEDOR(id),
+CONSTRAINT [PK_tb_material] PRIMARY KEY CLUSTERED
+
+(
+[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+
+/****** COMPRA ******/
+USE [Aula5]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[COMPRA](
+[id] [int] IDENTITY(1,1) NOT NULL,
+[id_fornecedor] [int] NULL,
+[id_cliente] [int] NULL,
+[id_material] [int] NULL,
+[datavenda] [date] NULL,
+
+
+constraint FK_cliente foreign key (id_cliente) references CLIENTE(id),
+constraint FK_fornecedor foreign key (id_fornecedor) references FORNECEDOR(id),
+constraint FK_material foreign key (id_material) references MATERIAL(id),
+CONSTRAINT [PK_tb_compra] PRIMARY KEY CLUSTERED
+
+(
+[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+
+drop table TIPO;
+drop table CLIENTE;
+drop table FORNECEDOR;
+drop table MATERIAL;
+drop table COMPRA;

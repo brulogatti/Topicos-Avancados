@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f5bb85e6706d4bf5a922a40f520e3f0c" Name="Diagram1">
+        <EntityTypeShape EntityType="Aula5Model.CLIENTE" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aula5Model.COMPRA" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aula5Model.FORNECEDOR" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aula5Model.MATERIAL" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Aula5Model.TIPO" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Aula5Model.FK_cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="Aula5Model.FK_fornecedor" ManuallyRouted="false" />
+        <AssociationConnector Association="Aula5Model.FK_material" ManuallyRouted="false" />
+        <AssociationConnector Association="Aula5Model.FK_CIDADE" ManuallyRouted="false" />
+        <AssociationConnector Association="Aula5Model.FK_tipo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

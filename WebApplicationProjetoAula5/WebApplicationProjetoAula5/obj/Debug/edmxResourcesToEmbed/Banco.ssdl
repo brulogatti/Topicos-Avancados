@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Aula5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="50" />
+    <Property Name="telefone" Type="varchar" MaxLength="50" />
+    <Property Name="cidade" Type="varchar" MaxLength="50" />
+    <Property Name="endereco" Type="varchar" MaxLength="50" />
+    <Property Name="cpf" Type="int" />
+  </EntityType>
+  <EntityType Name="COMPRA">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_fornecedor" Type="int" />
+    <Property Name="id_cliente" Type="int" />
+    <Property Name="id_material" Type="int" />
+    <Property Name="datavenda" Type="date" />
+  </EntityType>
+  <EntityType Name="FORNECEDOR">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="50" />
+    <Property Name="telefone" Type="varchar" MaxLength="50" />
+    <Property Name="cidade" Type="varchar" MaxLength="50" />
+    <Property Name="endereco" Type="varchar" MaxLength="50" />
+    <Property Name="cnpj" Type="int" />
+  </EntityType>
+  <EntityType Name="MATERIAL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="50" />
+    <Property Name="dataentrada" Type="date" />
+    <Property Name="id_tipo" Type="int" />
+    <Property Name="id_fornecedor" Type="int" />
+  </EntityType>
+  <EntityType Name="TIPO">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_CIDADE">
+    <End Role="FORNECEDOR" Type="Self.FORNECEDOR" Multiplicity="0..1" />
+    <End Role="MATERIAL" Type="Self.MATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FORNECEDOR">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MATERIAL">
+        <PropertyRef Name="id_fornecedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cliente">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
+    <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="COMPRA">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fornecedor">
+    <End Role="FORNECEDOR" Type="Self.FORNECEDOR" Multiplicity="0..1" />
+    <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FORNECEDOR">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="COMPRA">
+        <PropertyRef Name="id_fornecedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_material">
+    <End Role="MATERIAL" Type="Self.MATERIAL" Multiplicity="0..1" />
+    <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIAL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="COMPRA">
+        <PropertyRef Name="id_material" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tipo">
+    <End Role="TIPO" Type="Self.TIPO" Multiplicity="0..1" />
+    <End Role="MATERIAL" Type="Self.MATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MATERIAL">
+        <PropertyRef Name="id_tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Aula5ModelStoreContainer">
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="COMPRA" EntityType="Self.COMPRA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FORNECEDOR" EntityType="Self.FORNECEDOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MATERIAL" EntityType="Self.MATERIAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO" EntityType="Self.TIPO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CIDADE" Association="Self.FK_CIDADE">
+      <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
+      <End Role="MATERIAL" EntitySet="MATERIAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cliente" Association="Self.FK_cliente">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="COMPRA" EntitySet="COMPRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fornecedor" Association="Self.FK_fornecedor">
+      <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
+      <End Role="COMPRA" EntitySet="COMPRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_material" Association="Self.FK_material">
+      <End Role="MATERIAL" EntitySet="MATERIAL" />
+      <End Role="COMPRA" EntitySet="COMPRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tipo" Association="Self.FK_tipo">
+      <End Role="TIPO" EntitySet="TIPO" />
+      <End Role="MATERIAL" EntitySet="MATERIAL" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
