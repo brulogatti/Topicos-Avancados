@@ -7,14 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace WebApplicationProjetoAula5
 {
-    public partial class Cliente : System.Web.UI.Page
+    public partial class Fornecedor : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                CarregarDadosPagina();
-            }
+
         }
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
@@ -23,27 +20,27 @@ namespace WebApplicationProjetoAula5
             string telefone = txttelefone.Text;
             string cidade = txtcidade.Text;
             string endereco = txtendereco.Text;
-            int cpf = Convert.ToInt32(txtCPF.Text);
-            CLIENTE cli = new CLIENTE() { nome = nome, telefone = telefone, cidade = cidade, endereco = endereco, cpf = cpf };
+            int cnpj = Convert.ToInt32(txtCNPJ.Text);
+            FORNECEDOR f = new FORNECEDOR() { nome = nome, telefone = telefone, cidade = cidade, endereco = endereco, cnpj = cnpj };
             Aula5Entities contextAula5 = new Aula5Entities();
 
             string valor = Request.QueryString["idItem"];
 
             if (String.IsNullOrEmpty(valor))
             {
-                contextAula5.CLIENTE.Add(cli);
+                contextAula5.FORNECEDOR.Add(f);
                 lblmsg.Text = "Registro Inserido!";
             }
             else
             {
                 int id = Convert.ToInt32(valor);
-                CLIENTE cliente = contextAula5.CLIENTE.First(c => c.id == id);
-                cliente.id = cli.id;
-                cliente.nome = cli.nome;
-                cliente.telefone = cli.telefone;
-                cliente.endereco = cli.endereco;
-                cliente.cidade = cli.cidade;
-                cliente.cpf = cli.cpf;
+                FORNECEDOR fornecedor = contextAula5.FORNECEDOR.First(c => c.id == id);
+                fornecedor.id = f.id;
+                fornecedor.nome = f.nome;
+                fornecedor.telefone = f.telefone;
+                fornecedor.endereco = f.endereco;
+                fornecedor.cidade = f.cidade;
+                fornecedor.cnpj = f.cnpj;
                 lblmsg.Text = "Registro Alterado!";
             };
         }
@@ -52,17 +49,17 @@ namespace WebApplicationProjetoAula5
         {
             string valor = Request.QueryString["idItem"];
             int idItem = 0;
-            CLIENTE cliente = new CLIENTE();
-            Aula5Entities contextCli = new Aula5Entities();
+            FORNECEDOR fornecedor = new FORNECEDOR();
+            Aula5Entities contextFor = new Aula5Entities();
             if (!String.IsNullOrEmpty(valor))
             {
                 idItem = Convert.ToInt32(valor);
-                cliente = contextCli.CLIENTE.First(c => c.id == idItem);
-                txtnome.Text = cliente.nome;
-                txttelefone.Text = cliente.telefone;
-                txtcidade.Text = cliente.cidade;
-                txtendereco.Text = cliente.endereco;
-                txtCPF.Text = Convert.ToString(cliente.cpf);
+                fornecedor = contextFor.FORNECEDOR.First(c => c.id == idItem);
+                txtnome.Text = fornecedor.nome;
+                txttelefone.Text = fornecedor.telefone;
+                txtcidade.Text = fornecedor.cidade;
+                txtendereco.Text = fornecedor.endereco;
+                txtCNPJ.Text = Convert.ToString(fornecedor.cnpj);
             }
         }
     }

@@ -25,6 +25,7 @@ namespace WebApplicationProjetoAula5
         public Nullable<System.DateTime> dataentrada { get; set; }
         public Nullable<int> id_tipo { get; set; }
         public Nullable<int> id_fornecedor { get; set; }
+        public Nullable<decimal> valor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPRA> COMPRA { get; set; }

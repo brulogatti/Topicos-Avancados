@@ -96,6 +96,7 @@ CREATE TABLE [dbo].[MATERIAL](
 [dataentrada] [date] NULL,
 [id_tipo] [int] NULL,
 [id_fornecedor] [int] NULL,
+[valor] [decimal] NULL,
 
 
 constraint FK_tipo foreign key (id_tipo) references TIPO(id),
@@ -129,7 +130,7 @@ CREATE TABLE [dbo].[COMPRA](
 
 
 constraint FK_cliente foreign key (id_cliente) references CLIENTE(id),
-constraint FK_fornecedor foreign key (id_fornecedor) references FORNECEDOR(id),
+constraint FK_fornece foreign key (id_fornecedor) references FORNECEDOR(id),
 constraint FK_material foreign key (id_material) references MATERIAL(id),
 CONSTRAINT [PK_tb_compra] PRIMARY KEY CLUSTERED
 

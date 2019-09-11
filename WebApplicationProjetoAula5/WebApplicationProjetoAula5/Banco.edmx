@@ -46,6 +46,7 @@
           <Property Name="dataentrada" Type="date" />
           <Property Name="id_tipo" Type="int" />
           <Property Name="id_fornecedor" Type="int" />
+          <Property Name="valor" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="TIPO">
           <Key>
@@ -54,18 +55,6 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descricao" Type="varchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK_CIDADE">
-          <End Role="FORNECEDOR" Type="Self.FORNECEDOR" Multiplicity="0..1" />
-          <End Role="MATERIAL" Type="Self.MATERIAL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FORNECEDOR">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="MATERIAL">
-              <PropertyRef Name="id_fornecedor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_cliente">
           <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
           <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
@@ -78,7 +67,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_fornecedor">
+        <Association Name="FK_fornece">
           <End Role="FORNECEDOR" Type="Self.FORNECEDOR" Multiplicity="0..1" />
           <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -86,6 +75,18 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="COMPRA">
+              <PropertyRef Name="id_fornecedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fornecedor">
+          <End Role="FORNECEDOR" Type="Self.FORNECEDOR" Multiplicity="0..1" />
+          <End Role="MATERIAL" Type="Self.MATERIAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORNECEDOR">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MATERIAL">
               <PropertyRef Name="id_fornecedor" />
             </Dependent>
           </ReferentialConstraint>
@@ -120,17 +121,17 @@
           <EntitySet Name="FORNECEDOR" EntityType="Self.FORNECEDOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MATERIAL" EntityType="Self.MATERIAL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO" EntityType="Self.TIPO" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_CIDADE" Association="Self.FK_CIDADE">
-            <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
-            <End Role="MATERIAL" EntitySet="MATERIAL" />
-          </AssociationSet>
           <AssociationSet Name="FK_cliente" Association="Self.FK_cliente">
             <End Role="CLIENTE" EntitySet="CLIENTE" />
             <End Role="COMPRA" EntitySet="COMPRA" />
           </AssociationSet>
-          <AssociationSet Name="FK_fornecedor" Association="Self.FK_fornecedor">
+          <AssociationSet Name="FK_fornece" Association="Self.FK_fornece">
             <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
             <End Role="COMPRA" EntitySet="COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fornecedor" Association="Self.FK_fornecedor">
+            <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
+            <End Role="MATERIAL" EntitySet="MATERIAL" />
           </AssociationSet>
           <AssociationSet Name="FK_material" Association="Self.FK_material">
             <End Role="MATERIAL" EntitySet="MATERIAL" />
@@ -168,7 +169,7 @@
           <Property Name="id_material" Type="Int32" />
           <Property Name="datavenda" Type="DateTime" Precision="0" />
           <NavigationProperty Name="CLIENTE" Relationship="Self.FK_cliente" FromRole="COMPRA" ToRole="CLIENTE" />
-          <NavigationProperty Name="FORNECEDOR" Relationship="Self.FK_fornecedor" FromRole="COMPRA" ToRole="FORNECEDOR" />
+          <NavigationProperty Name="FORNECEDOR" Relationship="Self.FK_fornece" FromRole="COMPRA" ToRole="FORNECEDOR" />
           <NavigationProperty Name="MATERIAL" Relationship="Self.FK_material" FromRole="COMPRA" ToRole="MATERIAL" />
         </EntityType>
         <EntityType Name="FORNECEDOR">
@@ -181,8 +182,8 @@
           <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="cnpj" Type="Int32" />
-          <NavigationProperty Name="COMPRA" Relationship="Self.FK_fornecedor" FromRole="FORNECEDOR" ToRole="COMPRA" />
-          <NavigationProperty Name="MATERIAL" Relationship="Self.FK_CIDADE" FromRole="FORNECEDOR" ToRole="MATERIAL" />
+          <NavigationProperty Name="COMPRA" Relationship="Self.FK_fornece" FromRole="FORNECEDOR" ToRole="COMPRA" />
+          <NavigationProperty Name="MATERIAL" Relationship="Self.FK_fornecedor" FromRole="FORNECEDOR" ToRole="MATERIAL" />
         </EntityType>
         <EntityType Name="MATERIAL">
           <Key>
@@ -193,8 +194,9 @@
           <Property Name="dataentrada" Type="DateTime" Precision="0" />
           <Property Name="id_tipo" Type="Int32" />
           <Property Name="id_fornecedor" Type="Int32" />
+          <Property Name="valor" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="COMPRA" Relationship="Self.FK_material" FromRole="MATERIAL" ToRole="COMPRA" />
-          <NavigationProperty Name="FORNECEDOR" Relationship="Self.FK_CIDADE" FromRole="MATERIAL" ToRole="FORNECEDOR" />
+          <NavigationProperty Name="FORNECEDOR" Relationship="Self.FK_fornecedor" FromRole="MATERIAL" ToRole="FORNECEDOR" />
           <NavigationProperty Name="TIPO" Relationship="Self.FK_tipo" FromRole="MATERIAL" ToRole="TIPO" />
         </EntityType>
         <EntityType Name="TIPO">
@@ -217,7 +219,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_fornecedor">
+        <Association Name="FK_fornece">
           <End Role="FORNECEDOR" Type="Self.FORNECEDOR" Multiplicity="0..1" />
           <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -241,7 +243,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CIDADE">
+        <Association Name="FK_fornecedor">
           <End Role="FORNECEDOR" Type="Self.FORNECEDOR" Multiplicity="0..1" />
           <End Role="MATERIAL" Type="Self.MATERIAL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -275,7 +277,7 @@
             <End Role="CLIENTE" EntitySet="CLIENTE" />
             <End Role="COMPRA" EntitySet="COMPRA" />
           </AssociationSet>
-          <AssociationSet Name="FK_fornecedor" Association="Self.FK_fornecedor">
+          <AssociationSet Name="FK_fornece" Association="Self.FK_fornece">
             <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
             <End Role="COMPRA" EntitySet="COMPRA" />
           </AssociationSet>
@@ -283,7 +285,7 @@
             <End Role="MATERIAL" EntitySet="MATERIAL" />
             <End Role="COMPRA" EntitySet="COMPRA" />
           </AssociationSet>
-          <AssociationSet Name="FK_CIDADE" Association="Self.FK_CIDADE">
+          <AssociationSet Name="FK_fornecedor" Association="Self.FK_fornecedor">
             <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
             <End Role="MATERIAL" EntitySet="MATERIAL" />
           </AssociationSet>
@@ -341,6 +343,7 @@
                 <ScalarProperty Name="dataentrada" ColumnName="dataentrada" />
                 <ScalarProperty Name="id_tipo" ColumnName="id_tipo" />
                 <ScalarProperty Name="id_fornecedor" ColumnName="id_fornecedor" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
