@@ -11,6 +11,7 @@ namespace WebApplicationProjetoAula5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            LoadGrid();
             if (!IsPostBack)
             {
                 CarregarDadosPagina();
@@ -38,7 +39,12 @@ namespace WebApplicationProjetoAula5
                 tipo.descricao = tip.descricao;
                 lblmsg.Text = "Registro Alterado!";
             };
+
+            contextAula5.SaveChanges();
+            LoadGrid();
+            
         }
+
 
         private void CarregarDadosPagina()
         {
@@ -52,6 +58,15 @@ namespace WebApplicationProjetoAula5
                 tipo = contextTipo.TIPO.First(c => c.id == idItem);
                 txtdescricaotipo.Text = tipo.descricao;
             }
+        }
+
+        private void LoadGrid()
+        {
+            Aula5Entities context = new Aula5Entities();
+            List<TIPO> lsttipo = context.TIPO.ToList<TIPO>();
+
+            GVTipo.DataSource = lsttipo;
+            GVTipo.DataBind();
         }
     }
 }

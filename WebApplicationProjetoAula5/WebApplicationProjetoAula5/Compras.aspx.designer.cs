@@ -67,6 +67,15 @@ namespace WebApplicationProjetoAula5 {
         protected global::System.Web.UI.WebControls.Button btnCadastrar;
         
         /// <summary>
+        /// Controle GVCompras.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GVCompras;
+        
+        /// <summary>
         /// Controle lblmsg.
         /// </summary>
         /// <remarks>
@@ -74,14 +83,5 @@ namespace WebApplicationProjetoAula5 {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblmsg;
-        
-        /// <summary>
-        /// Controle lblmsgdiagnostico.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmsgdiagnostico;
     }
 }

@@ -37,6 +37,32 @@
             <asp:TextBox class="form-control" name="txtCPF" ID="txtCPF" runat="server"></asp:TextBox>
         </div>
         <asp:Button class="btn btn-primary" ID="btnCadastrar" runat="server" Text="Salvar" OnClick="btnCadastrar_Click" />
+
+            <br />
+        <br />
+
+            <asp:GridView ID="GVCliente" runat=server CellPadding="6" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
+        <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:BoundField DataField="Id" HeaderText="ID"></asp:BoundField>
+                    <asp:BoundField DataField="Nome" HeaderText="Nome"></asp:BoundField>
+                    <asp:BoundField DataField="Telefone" HeaderText="Telefone"></asp:BoundField>
+                    <asp:BoundField DataField="Cidade" HeaderText="Cidade"></asp:BoundField>
+                    <asp:BoundField DataField="Endereco" HeaderText="Endereço"></asp:BoundField>
+                    <asp:BoundField DataField="CPF" HeaderText="CPF"></asp:BoundField>
+                </Columns>
+        <EditRowStyle BackColor="#2461BF" />
+        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle BackColor="#EFF3FB" />
+        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+    </asp:GridView>
+
     </form>
     <br />
 
@@ -48,11 +74,4 @@
     </div>
     <%} %>
 
-    <% if (!String.IsNullOrEmpty(lblmsg.Text))
-        {%>
-    <div class="alert alert-success">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong><asp:Label ID="lblmsgdiagnostico" runat="server" Text=""></asp:Label></strong>
-    </div>
-    <%} %>
 </asp:Content>

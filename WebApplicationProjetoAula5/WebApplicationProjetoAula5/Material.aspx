@@ -34,9 +34,32 @@
         </div>
         <div class="form-group">
             <label for="fornecedor">Fornecedor:</label>
+  
             <asp:DropDownList ID="ddlFornecedor" runat="server"></asp:DropDownList>
         </div>
         <asp:Button class="btn btn-primary" ID="btnCadastrar" runat="server" Text="Salvar" OnClick="btnCadastrar_Click" />
+        <br />
+    <asp:GridView runat="server" ID="GVMaterial" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+        <AlternatingRowStyle BackColor="White" />
+        <Columns>
+            <asp:BoundField DataField="Id" HeaderText="ID" />
+            <asp:BoundField DataField="Descricao" HeaderText="Descrição" />
+            <asp:BoundField DataField="Dataentrada" HeaderText="Data Entrada" />
+            <asp:BoundField DataField="Id_tipo" HeaderText="Tipo" />
+            <asp:BoundField DataField="Id_fornecedor" HeaderText="Fornecedor" />
+            <asp:BoundField DataField="Valor" HeaderText="Valor" />
+        </Columns>
+        <EditRowStyle BackColor="#2461BF" />
+        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle BackColor="#EFF3FB" />
+        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        </asp:GridView>
     </form>
     <br />
 
@@ -48,11 +71,4 @@
     </div>
     <%} %>
 
-    <% if (!String.IsNullOrEmpty(lblmsg.Text))
-        {%>
-    <div class="alert alert-success">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong><asp:Label ID="lblmsgdiagnostico" runat="server" Text=""></asp:Label></strong>
-    </div>
-    <%} %>
 </asp:Content>

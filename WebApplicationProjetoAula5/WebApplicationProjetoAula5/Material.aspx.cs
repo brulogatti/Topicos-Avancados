@@ -11,7 +11,13 @@ namespace WebApplicationProjetoAula5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            LoadGrid();
+            if (!IsPostBack)
+            {
+                CarregarDadosPagina();
+                LoadDDLFornecedor();
+                LoadDDLTipo();
+            }
         }
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
@@ -42,7 +48,27 @@ namespace WebApplicationProjetoAula5
                 material.descricao = m.descricao;
                 lblmsg.Text = "Registro Alterado!";
             };
+
+            contextAula5.SaveChanges();
+            LoadGrid();
         }
+
+        private void LoadDDLFornecedor()
+        {
+            ddlFornecedor.DataSource = new Aula5Entities().FORNECEDOR.ToList<FORNECEDOR>();
+            ddlFornecedor.DataTextField = "Nome";
+            ddlFornecedor.DataValueField = "Id";
+            ddlFornecedor.DataBind();
+        }
+
+        private void LoadDDLTipo()
+        {
+            ddlTipo.DataSource = new Aula5Entities().TIPO.ToList<TIPO>();
+            ddlTipo.DataTextField = "Descricao";
+            ddlTipo.DataValueField = "Id";
+            ddlTipo.DataBind();
+        }
+
         private void CarregarDadosPagina()
         {
             string valor = Request.QueryString["idItem"];
@@ -59,6 +85,28 @@ namespace WebApplicationProjetoAula5
                 txtdescricao.Text = material.descricao;
                 txtvalor.Text = material.valor.ToString();
             }
+        }
+
+        private void LoadGrid()
+        {
+            Aula5Entities context = new Aula5Entities();
+
+            var dados = (
+                         from m in context.MATERIAL
+                         from f in context.FORNECEDOR.Where(x=>x.id==m.id_fornecedor)
+                         from t in context.TIPO.Where(x=>x.id==m.id_tipo)
+                         select new
+                         {
+                             Id = m.id,
+                             Descricao=m.descricao,
+                             Dataentrada=m.dataentrada,
+                             Id_tipo=t.descricao,
+                             Id_fornecedor=f.nome,
+                             Valor=m.valor
+                         }).ToList();
+
+            GVMaterial.DataSource = dados;
+            GVMaterial.DataBind();
         }
     }
 }
