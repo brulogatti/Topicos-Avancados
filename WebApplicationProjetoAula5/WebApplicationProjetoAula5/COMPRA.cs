@@ -20,8 +20,8 @@ namespace WebApplicationProjetoAula5
         public Nullable<int> id_material { get; set; }
         public Nullable<System.DateTime> datavenda { get; set; }
     
+        public virtual MATERIAL MATERIAL { get; set; }
         public virtual CLIENTE CLIENTE { get; set; }
         public virtual FORNECEDOR FORNECEDOR { get; set; }
-        public virtual MATERIAL MATERIAL { get; set; }
     }
 }

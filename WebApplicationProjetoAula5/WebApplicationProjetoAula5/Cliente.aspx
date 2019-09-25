@@ -6,7 +6,7 @@
     <script src="http://code.jquery.com/jquery-1.8.2.js"></script> 
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
     <script>
-    </script>
+</script>
     <form id="form1" runat="server">
         <article class="kanban-entry grab" id="item1" draggable="true">
             <div class="kanban-entry-inner">
@@ -41,8 +41,7 @@
             <br />
         <br />
 
-            <asp:GridView ID="GVCliente" runat=server CellPadding="6" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
-        <AlternatingRowStyle BackColor="White" />
+            <asp:GridView ID="GVCliente" CssClass="table table-hover" runat=server CellPadding="3" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="ID"></asp:BoundField>
                     <asp:BoundField DataField="Nome" HeaderText="Nome"></asp:BoundField>
@@ -51,16 +50,15 @@
                     <asp:BoundField DataField="Endereco" HeaderText="Endereço"></asp:BoundField>
                     <asp:BoundField DataField="CPF" HeaderText="CPF"></asp:BoundField>
                 </Columns>
-        <EditRowStyle BackColor="#2461BF" />
-        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#EFF3FB" />
-        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-        <SortedAscendingCellStyle BackColor="#F5F7FB" />
-        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-        <SortedDescendingCellStyle BackColor="#E9EBEF" />
-        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        <FooterStyle BackColor="White" ForeColor="#000066" />
+        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+        <RowStyle ForeColor="#000066" />
+        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#00547E" />
     </asp:GridView>
 
     </form>

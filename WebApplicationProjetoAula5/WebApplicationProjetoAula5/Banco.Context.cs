@@ -25,10 +25,10 @@ namespace WebApplicationProjetoAula5
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CLIENTE> CLIENTE { get; set; }
         public virtual DbSet<COMPRA> COMPRA { get; set; }
-        public virtual DbSet<FORNECEDOR> FORNECEDOR { get; set; }
         public virtual DbSet<MATERIAL> MATERIAL { get; set; }
         public virtual DbSet<TIPO> TIPO { get; set; }
+        public virtual DbSet<CLIENTE> CLIENTE { get; set; }
+        public virtual DbSet<FORNECEDOR> FORNECEDOR { get; set; }
     }
 }

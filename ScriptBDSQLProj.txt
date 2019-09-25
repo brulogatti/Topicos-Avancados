@@ -38,7 +38,7 @@ CREATE TABLE [dbo].[FORNECEDOR](
 [telefone] [varchar] (50) NULL,
 [cidade] [varchar] (50) NULL,
 [endereco] [varchar] (50) NULL,
-[cnpj] [int] NULL,
+[cnpj] [bigint] NULL,
 
 CONSTRAINT [PK_tb_fornecedor] PRIMARY KEY CLUSTERED
 
@@ -66,7 +66,7 @@ CREATE TABLE [dbo].[CLIENTE](
 [telefone] [varchar] (50) NULL,
 [cidade] [varchar] (50) NULL,
 [endereco] [varchar] (50) NULL,
-[cpf] [int] NULL,
+[cpf] [bigint] NULL,
 
 
 /**constraint FK_CIDADE foreign key (idestado) references ESTADO(id),*/

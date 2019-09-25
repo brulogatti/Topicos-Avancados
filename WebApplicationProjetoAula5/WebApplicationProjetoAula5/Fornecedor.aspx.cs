@@ -20,16 +20,18 @@ namespace WebApplicationProjetoAula5
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
-            if (txtcidade.Text == "" || txtnome.Text == ""||txttelefone.Text == ""||txtcidade.Text == ""||txtCNPJ.Text == ""||txtendereco.Text == "") {
+            if (txtcidade.Text == "" || txtnome.Text == "" || txttelefone.Text == "" || txtcidade.Text == "" || txtCNPJ.Text == "" || txtendereco.Text == "")
+            {
                 lblmsg.Text = "Preencha todos os campos!";
             }
             else
             {
+
                 string nome = txtnome.Text;
                 string telefone = txttelefone.Text;
                 string cidade = txtcidade.Text;
                 string endereco = txtendereco.Text;
-                int cnpj = Convert.ToInt32(txtCNPJ.Text);
+                Int64 cnpj = Convert.ToInt64(txtCNPJ.Text.ToString().Substring(0, 8));
                 FORNECEDOR f = new FORNECEDOR() { nome = nome, telefone = telefone, cidade = cidade, endereco = endereco, cnpj = cnpj };
                 Aula5Entities contextAula5 = new Aula5Entities();
 
@@ -44,7 +46,6 @@ namespace WebApplicationProjetoAula5
                 {
                     int id = Convert.ToInt32(valor);
                     FORNECEDOR fornecedor = contextAula5.FORNECEDOR.First(c => c.id == id);
-                    fornecedor.id = f.id;
                     fornecedor.nome = f.nome;
                     fornecedor.telefone = f.telefone;
                     fornecedor.endereco = f.endereco;
@@ -81,8 +82,51 @@ namespace WebApplicationProjetoAula5
             Aula5Entities context = new Aula5Entities();
             List<FORNECEDOR> lstfornecedor = context.FORNECEDOR.ToList<FORNECEDOR>();
 
+            foreach (var item in lstfornecedor)
+            {
+                string cnpj = Convert.ToString(item.cnpj.Value);
+                cnpj = cnpj + "0001";
+                string digito = IsCnpj(cnpj);
+                
+                item.cnpj = Convert.ToInt64(cnpj + digito);
+            }
+
             GVFornecedor.DataSource = lstfornecedor;
             GVFornecedor.DataBind();
+        }
+
+        public static string IsCnpj(String cnpj)
+        {
+            int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int soma;
+            int resto;
+            string digito;
+            string tempCnpj;
+            cnpj = cnpj.Trim();
+            cnpj = cnpj.Replace(".", "").Replace("-", "").Replace("/", "");
+
+            tempCnpj = cnpj.Substring(0, 12);
+            soma = 0;
+            for (int i = 0; i < 12; i++)
+                soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
+            resto = (soma % 11);
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+            digito = resto.ToString();
+            tempCnpj = tempCnpj + digito;
+            soma = 0;
+            for (int i = 0; i < 13; i++)
+                soma += int.Parse(tempCnpj[i].ToString()) * multiplicador2[i];
+            resto = (soma % 11);
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+            digito = digito + resto.ToString();
+            return digito;
         }
     }
 }

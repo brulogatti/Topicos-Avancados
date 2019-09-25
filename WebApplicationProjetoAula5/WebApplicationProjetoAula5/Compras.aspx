@@ -37,7 +37,7 @@
         <br />
         <br />
         <br />
-    <asp:GridView runat="server" ID="GVCompras" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+    <asp:GridView runat="server" CssClass="table table-hover" ID="GVCompras" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="Id" />

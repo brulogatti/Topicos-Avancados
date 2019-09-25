@@ -5,16 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="adb98dc5a8bd4cc483de3b98796a85b3" Name="Diagram1">
-        <EntityTypeShape EntityType="Aula5Model.CLIENTE" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Aula5Model.COMPRA" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Aula5Model.FORNECEDOR" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Aula5Model.MATERIAL" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Aula5Model.TIPO" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="Aula5Model.FK_cliente" ManuallyRouted="false" />
-        <AssociationConnector Association="Aula5Model.FK_fornece" ManuallyRouted="false" />
         <AssociationConnector Association="Aula5Model.FK_material" ManuallyRouted="false" />
-        <AssociationConnector Association="Aula5Model.FK_fornecedor" ManuallyRouted="false" />
         <AssociationConnector Association="Aula5Model.FK_tipo" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Aula5Model.CLIENTE" Width="1.5" PointX="5.5" PointY="7.625" />
+        <EntityTypeShape EntityType="Aula5Model.FORNECEDOR" Width="1.5" PointX="2.5" PointY="7.5" />
+        <AssociationConnector Association="Aula5Model.FK_cliente" />
+        <AssociationConnector Association="Aula5Model.FK_fornece" />
+        <AssociationConnector Association="Aula5Model.FK_fornecedor" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

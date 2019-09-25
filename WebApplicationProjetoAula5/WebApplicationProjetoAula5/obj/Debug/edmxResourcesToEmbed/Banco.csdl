@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Aula5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="CLIENTE">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="telefone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cpf" Type="Int32" />
-    <NavigationProperty Name="COMPRA" Relationship="Self.FK_cliente" FromRole="CLIENTE" ToRole="COMPRA" />
-  </EntityType>
   <EntityType Name="COMPRA">
     <Key>
       <PropertyRef Name="id" />
@@ -21,22 +9,9 @@
     <Property Name="id_cliente" Type="Int32" />
     <Property Name="id_material" Type="Int32" />
     <Property Name="datavenda" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="CLIENTE" Relationship="Self.FK_cliente" FromRole="COMPRA" ToRole="CLIENTE" />
-    <NavigationProperty Name="FORNECEDOR" Relationship="Self.FK_fornece" FromRole="COMPRA" ToRole="FORNECEDOR" />
     <NavigationProperty Name="MATERIAL" Relationship="Self.FK_material" FromRole="COMPRA" ToRole="MATERIAL" />
-  </EntityType>
-  <EntityType Name="FORNECEDOR">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="telefone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cnpj" Type="Int32" />
-    <NavigationProperty Name="COMPRA" Relationship="Self.FK_fornece" FromRole="FORNECEDOR" ToRole="COMPRA" />
-    <NavigationProperty Name="MATERIAL" Relationship="Self.FK_fornecedor" FromRole="FORNECEDOR" ToRole="MATERIAL" />
+    <NavigationProperty Name="CLIENTE" Relationship="Aula5Model.FK_cliente" FromRole="COMPRA" ToRole="CLIENTE" />
+    <NavigationProperty Name="FORNECEDOR" Relationship="Aula5Model.FK_fornece" FromRole="COMPRA" ToRole="FORNECEDOR" />
   </EntityType>
   <EntityType Name="MATERIAL">
     <Key>
@@ -49,8 +24,8 @@
     <Property Name="id_fornecedor" Type="Int32" />
     <Property Name="valor" Type="Decimal" Precision="18" Scale="0" />
     <NavigationProperty Name="COMPRA" Relationship="Self.FK_material" FromRole="MATERIAL" ToRole="COMPRA" />
-    <NavigationProperty Name="FORNECEDOR" Relationship="Self.FK_fornecedor" FromRole="MATERIAL" ToRole="FORNECEDOR" />
     <NavigationProperty Name="TIPO" Relationship="Self.FK_tipo" FromRole="MATERIAL" ToRole="TIPO" />
+    <NavigationProperty Name="FORNECEDOR" Relationship="Aula5Model.FK_fornecedor" FromRole="MATERIAL" ToRole="FORNECEDOR" />
   </EntityType>
   <EntityType Name="TIPO">
     <Key>
@@ -60,30 +35,6 @@
     <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="MATERIAL" Relationship="Self.FK_tipo" FromRole="TIPO" ToRole="MATERIAL" />
   </EntityType>
-  <Association Name="FK_cliente">
-    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
-    <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CLIENTE">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="COMPRA">
-        <PropertyRef Name="id_cliente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_fornece">
-    <End Role="FORNECEDOR" Type="Self.FORNECEDOR" Multiplicity="0..1" />
-    <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="FORNECEDOR">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="COMPRA">
-        <PropertyRef Name="id_fornecedor" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_material">
     <End Role="MATERIAL" Type="Self.MATERIAL" Multiplicity="0..1" />
     <End Role="COMPRA" Type="Self.COMPRA" Multiplicity="*" />
@@ -93,18 +44,6 @@
       </Principal>
       <Dependent Role="COMPRA">
         <PropertyRef Name="id_material" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_fornecedor">
-    <End Role="FORNECEDOR" Type="Self.FORNECEDOR" Multiplicity="0..1" />
-    <End Role="MATERIAL" Type="Self.MATERIAL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="FORNECEDOR">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="MATERIAL">
-        <PropertyRef Name="id_fornecedor" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -121,30 +60,91 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="Aula5Entities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
     <EntitySet Name="COMPRA" EntityType="Self.COMPRA" />
-    <EntitySet Name="FORNECEDOR" EntityType="Self.FORNECEDOR" />
     <EntitySet Name="MATERIAL" EntityType="Self.MATERIAL" />
     <EntitySet Name="TIPO" EntityType="Self.TIPO" />
-    <AssociationSet Name="FK_cliente" Association="Self.FK_cliente">
-      <End Role="CLIENTE" EntitySet="CLIENTE" />
-      <End Role="COMPRA" EntitySet="COMPRA" />
-    </AssociationSet>
-    <AssociationSet Name="FK_fornece" Association="Self.FK_fornece">
-      <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
-      <End Role="COMPRA" EntitySet="COMPRA" />
-    </AssociationSet>
     <AssociationSet Name="FK_material" Association="Self.FK_material">
       <End Role="MATERIAL" EntitySet="MATERIAL" />
       <End Role="COMPRA" EntitySet="COMPRA" />
-    </AssociationSet>
-    <AssociationSet Name="FK_fornecedor" Association="Self.FK_fornecedor">
-      <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
-      <End Role="MATERIAL" EntitySet="MATERIAL" />
     </AssociationSet>
     <AssociationSet Name="FK_tipo" Association="Self.FK_tipo">
       <End Role="TIPO" EntitySet="TIPO" />
       <End Role="MATERIAL" EntitySet="MATERIAL" />
     </AssociationSet>
+    <EntitySet Name="CLIENTE" EntityType="Aula5Model.CLIENTE" />
+    <EntitySet Name="FORNECEDOR" EntityType="Aula5Model.FORNECEDOR" />
+    <AssociationSet Name="FK_cliente" Association="Aula5Model.FK_cliente">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="COMPRA" EntitySet="COMPRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fornece" Association="Aula5Model.FK_fornece">
+      <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
+      <End Role="COMPRA" EntitySet="COMPRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fornecedor" Association="Aula5Model.FK_fornecedor">
+      <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
+      <End Role="MATERIAL" EntitySet="MATERIAL" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telefone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cpf" Type="Int64" />
+    <NavigationProperty Name="COMPRA" Relationship="Aula5Model.FK_cliente" FromRole="CLIENTE" ToRole="COMPRA" />
+  </EntityType>
+  <EntityType Name="FORNECEDOR">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telefone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cnpj" Type="Int64" />
+    <NavigationProperty Name="COMPRA" Relationship="Aula5Model.FK_fornece" FromRole="FORNECEDOR" ToRole="COMPRA" />
+    <NavigationProperty Name="MATERIAL" Relationship="Aula5Model.FK_fornecedor" FromRole="FORNECEDOR" ToRole="MATERIAL" />
+  </EntityType>
+  <Association Name="FK_cliente">
+    <End Type="Aula5Model.CLIENTE" Role="CLIENTE" Multiplicity="0..1" />
+    <End Type="Aula5Model.COMPRA" Role="COMPRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="COMPRA">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fornece">
+    <End Type="Aula5Model.FORNECEDOR" Role="FORNECEDOR" Multiplicity="0..1" />
+    <End Type="Aula5Model.COMPRA" Role="COMPRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FORNECEDOR">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="COMPRA">
+        <PropertyRef Name="id_fornecedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fornecedor">
+    <End Type="Aula5Model.FORNECEDOR" Role="FORNECEDOR" Multiplicity="0..1" />
+    <End Type="Aula5Model.MATERIAL" Role="MATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FORNECEDOR">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="MATERIAL">
+        <PropertyRef Name="id_fornecedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

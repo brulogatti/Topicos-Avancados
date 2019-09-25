@@ -29,7 +29,7 @@ namespace WebApplicationProjetoAula5
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPRA> COMPRA { get; set; }
-        public virtual FORNECEDOR FORNECEDOR { get; set; }
         public virtual TIPO TIPO { get; set; }
+        public virtual FORNECEDOR FORNECEDOR { get; set; }
     }
 }

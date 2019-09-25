@@ -9,7 +9,7 @@
     <Property Name="telefone" Type="varchar" MaxLength="50" />
     <Property Name="cidade" Type="varchar" MaxLength="50" />
     <Property Name="endereco" Type="varchar" MaxLength="50" />
-    <Property Name="cpf" Type="int" />
+    <Property Name="cpf" Type="bigint" />
   </EntityType>
   <EntityType Name="COMPRA">
     <Key>
@@ -30,7 +30,7 @@
     <Property Name="telefone" Type="varchar" MaxLength="50" />
     <Property Name="cidade" Type="varchar" MaxLength="50" />
     <Property Name="endereco" Type="varchar" MaxLength="50" />
-    <Property Name="cnpj" Type="int" />
+    <Property Name="cnpj" Type="bigint" />
   </EntityType>
   <EntityType Name="MATERIAL">
     <Key>

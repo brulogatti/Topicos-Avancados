@@ -35,7 +35,6 @@ namespace WebApplicationProjetoAula5
             {
                 int id = Convert.ToInt32(valor);
                 TIPO tipo = contextAula5.TIPO.First(c => c.id == id);
-                tipo.id = tip.id;
                 tipo.descricao = tip.descricao;
                 lblmsg.Text = "Registro Alterado!";
             };

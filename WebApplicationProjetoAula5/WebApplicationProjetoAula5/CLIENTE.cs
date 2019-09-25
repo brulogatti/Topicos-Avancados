@@ -25,7 +25,7 @@ namespace WebApplicationProjetoAula5
         public string telefone { get; set; }
         public string cidade { get; set; }
         public string endereco { get; set; }
-        public Nullable<int> cpf { get; set; }
+        public Nullable<long> cpf { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPRA> COMPRA { get; set; }
