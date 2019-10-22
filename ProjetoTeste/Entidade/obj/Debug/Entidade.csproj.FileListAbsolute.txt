@@ -1,0 +1,5 @@
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjetoTeste\Entidade\bin\Debug\Entidade.dll
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjetoTeste\Entidade\bin\Debug\Entidade.pdb
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjetoTeste\Entidade\obj\Debug\Entidade.csproj.CoreCompileInputs.cache
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjetoTeste\Entidade\obj\Debug\Entidade.dll
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjetoTeste\Entidade\obj\Debug\Entidade.pdb

@@ -1,0 +1,32 @@
+-- ================================================
+-- CONSULTA BD
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		BRUNA LOGATTI
+-- Create date: 08/10/2019
+-- Description:	CONSULTA DE INFORMAÇÕES - 
+-- =============================================
+CREATE PROCEDURE TESTA_CONS_PROCEDURE 
+	-- Add the parameters for the stored procedure here
+	@NOME VARCHAR
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT CODIGO, NOME, TELEFONE FROM TB_CADASTRO WHERE NOME LIKE '%' + (@NOME) + '%'
+END
+GO
+
+
+INSERT INTO TB_CADASTRO(NOME, TELEFONE) VALUES ('BRUNA', '16 3333-2222');
+
+INSERT INTO TB_CADASTRO(NOME, TELEFONE) VALUES ('PEDRO', '16 4433-2222');
+
+EXEC TESTA_CONS_PROCEDURE 'PEDRO'

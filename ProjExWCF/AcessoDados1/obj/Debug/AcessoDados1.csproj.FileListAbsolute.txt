@@ -1,0 +1,6 @@
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjExWCF\AcessoDados1\bin\Debug\AcessoDados1.dll
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjExWCF\AcessoDados1\bin\Debug\AcessoDados1.pdb
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjExWCF\AcessoDados1\obj\Debug\AcessoDados1.csprojAssemblyReference.cache
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjExWCF\AcessoDados1\obj\Debug\AcessoDados1.csproj.CoreCompileInputs.cache
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjExWCF\AcessoDados1\obj\Debug\AcessoDados1.dll
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjExWCF\AcessoDados1\obj\Debug\AcessoDados1.pdb

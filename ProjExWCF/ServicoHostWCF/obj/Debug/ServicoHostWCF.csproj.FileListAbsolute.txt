@@ -1,0 +1,2 @@
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjExWCF\ServicoHostWCF\obj\Debug\ServicoHostWCF.csprojAssemblyReference.cache
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjExWCF\ServicoHostWCF\obj\Debug\ServicoHostWCF.csproj.CoreCompileInputs.cache

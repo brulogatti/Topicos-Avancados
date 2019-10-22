@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7a6dcd21-a02b-4594-b92f-3e1a524738f1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:7874" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="c970fc3a-f793-4afa-b119-16409839f629" SourceId="1" SourceUrl="http://localhost:7874/?disco" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="3591fb7d-166b-4ae3-8fd5-a7dba6f2e3b3" SourceId="1" SourceUrl="http://localhost:7874/?xsd=xsd1" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="9504a76c-b798-4ce8-af6c-3eca0802cba6" SourceId="1" SourceUrl="http://localhost:7874/?xsd=xsd2" />
+    <MetadataFile FileName="Servico.wsdl" MetadataType="Wsdl" ID="e1b30dda-c098-47df-a14d-a8fb495255db" SourceId="1" SourceUrl="http://localhost:7874/?wsdl" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="96309427-f817-4321-b108-8f85f84eccbf" SourceId="1" SourceUrl="http://localhost:7874/?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
