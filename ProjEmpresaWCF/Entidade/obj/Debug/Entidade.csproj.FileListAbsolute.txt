@@ -1,0 +1,6 @@
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjEmpresaWCF\Entidade\bin\Debug\Entidade.dll
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjEmpresaWCF\Entidade\bin\Debug\Entidade.pdb
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjEmpresaWCF\Entidade\obj\Debug\Entidade.csprojAssemblyReference.cache
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjEmpresaWCF\Entidade\obj\Debug\Entidade.csproj.CoreCompileInputs.cache
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjEmpresaWCF\Entidade\obj\Debug\Entidade.dll
+C:\Users\Bruna Logatti\Documents\Engenharia computação\Tópicos Avançados\ProjEmpresaWCF\Entidade\obj\Debug\Entidade.pdb
